@@ -87,16 +87,16 @@ function withdraw(quantity, address) {
 
 //Stop automatic lending renewal
 function stopRenewal() {
-	ws.send(JSON.stringify({
+	send({
 		m: 'sr'
-	}));
+	});
 }
 
 //Transfer from a wallet to another one if from == 'margin' transfer from margin wallet to funding wallet
 function transfer(quantity) {
-	ws.send(JSON.stringify({
+	send({
 		m: 't'
 		from: 'margin' | 'funding'
 		q: quantity * satoshi
-	}));
+	});
 }

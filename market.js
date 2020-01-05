@@ -7,6 +7,10 @@ var WebSocket = require('ws'),
 		events = {
 			'chat', 'c',
 			'liquidations', 'l',
+			'candle1second', '1S',
+			'candle5seconds', '5S',
+			'candle15seconds', '15S',
+			'candle30seconds', '30S',
 			'candle1minute', '1',
 			'candle5minutes', '5',
 			'candle15minutes', '15',
@@ -40,8 +44,8 @@ function getCandles(symbol, interval, begin, end){
 	//GET "https://www.berivatives.com/candles?symbol="+symbol+"&interval="+interval+"&begin="+begin+"&end="+end
 	//HTTP CODE: 200 = OK || 429 = Too Many Requests || 500 = Internal Server Error
 	//[
-	//	[beginDate, open, high, low, close, volume, volume in bitcoin, endDate],
-	//	[beginDate, open, high, low, close, volume, volume in bitcoin, endDate],
+	//	[beginDate, open, high, low, close, volume, bitcoinVolume , endDate],
+	//	[beginDate, open, high, low, close, volume, bitcoinVolume, endDate],
 	//	...
 	//]
 }
@@ -67,8 +71,8 @@ ws.on('message', function incoming(data) {
 		}
 			
 		if(json['c'] === 'ob'){ // orderbook every sec
-			bids = json['d'][0]; // first 20 bids [[price, quantity], ...] sorted in descending order
-			asks = json['d'][1]; // first 20 asks [[price, quantity], ...] sorted in ascending order
+			bids = json['d'][0]; // first 25 bids [[price, quantity], ...] sorted in descending order
+			asks = json['d'][1]; // first 25 asks [[price, quantity], ...] sorted in ascending order
 		}
 		
 		else if(json['c'] === 'obf'){ // fullorderbook event
@@ -110,7 +114,7 @@ ws.on('message', function incoming(data) {
 		}
 		
 		else{ // candles
-			//json['d'] = [beginDate, open, high, low, close, volume, volume in bitcoin, endDate]
+			//json['d'] = [beginDate, open, high, low, close, volume, bitcoinVolume , endDate] //every 500ms
 		}
 	}catch(e){
 		console.log(e);
