@@ -1,6 +1,6 @@
 //JSON FORMAT - SATOSHI UNIT
 
-//npm install ws crypto
+//npm install ws
 const WebSocket = require('ws'),
 	crypto = require('crypto'),
 	key = '',
@@ -211,7 +211,7 @@ function cancelOrder(id) {
 //type : optional - address type - default is legacy
 function getNewAddress() {
 	ws.send(JSON.stringify({
-		m: 'a'
+		m: 'a',
 		type: 'legacy' | 'bech32'
 	}));
 }
@@ -235,7 +235,7 @@ function stopRenewal() {
 function transfer(quantity) {
 	ws.send(JSON.stringify({
 		m: 't'
-		from: 'margin' | 'funding'
+		from: 'margin' | 'funding',
 		q: quantity * satoshi
 	}));
 }

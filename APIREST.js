@@ -1,4 +1,4 @@
-//npm install crypto request
+//npm install request
 const request = require("request"),
   crypto = require("crypto"),
   satoshi = 100000000,
@@ -72,7 +72,7 @@ function cancelOrder(id) {
 //type : optional - address type - default is legacy
 function getNewAddress() {
   send({
-    m: "a"
+    m: "a",
     type: "legacy" | "bech32"
   });
 }
@@ -95,8 +95,8 @@ function stopRenewal() {
 //Transfer from a wallet to another one if from == 'margin' transfer from margin wallet to funding wallet
 function transfer(quantity) {
 	send({
-		m: 't'
-		from: 'margin' | 'funding'
+		m: 't',
+		from: 'margin' | 'funding',
 		q: quantity * satoshi
 	});
 }
