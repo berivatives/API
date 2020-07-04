@@ -13,7 +13,7 @@ function send(json) {
     .digest("hex");
   json["time"] = time;
   json["message"] = message;
-  json["window"] = 5000; //default = 5000 milliseconds = 5 seconds - if the server receives the message after time + window, the operation is cancelled
+  json["window"] = 5000; // default = 5000 milliseconds = 5 seconds - if the server receives the message after time + window, the operation is cancelled
   request.post(
     {
       url: "https://www.berivatives.com/api",
