@@ -11,6 +11,7 @@ function send(json) {
     .createHmac("sha512", secret)
     .update(time)
     .digest("hex");
+  json["api-key"] = key;
   json["time"] = time;
   json["message"] = message;
   json["window"] = 5000; // default = 5000 milliseconds = 5 seconds - if the server receives the message after time + window, the operation is cancelled
