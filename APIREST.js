@@ -69,22 +69,6 @@ function cancelOrder(id) {
     });
 }
 
-//type : optional - address type - default is legacy
-function getNewAddress() {
-    send({
-        m: "a",
-        type: "legacy" | "bech32"
-    });
-}
-
-function withdraw(quantity, address) {
-    send({
-        m: "w",
-        q: quantity * satoshi,
-        ad: address
-    });
-}
-
 //Stop automatic lending renewal
 function stopRenewal() {
     send({
