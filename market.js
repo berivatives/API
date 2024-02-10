@@ -34,12 +34,12 @@ function unsubscribe(symbol, channels) {
 }
 
 //interval -> see the channels map
-//begin and end -> milliseconds
-function getCandles(symbol, interval, begin, end) {
-    //GET "https://www.berivatives.com/candles?symbol="+symbol+"&interval="+interval+"&begin="+begin+"&end="+end
+//start and end -> milliseconds
+function getCandles(symbol, interval, start, end) {
+    //GET "https://www.berivatives.com/candles?symbol="+symbol+"&interval="+interval+"&start="+start+"&end="+end
     //[
-    //	[beginDate, open, high, low, close, volume, bitcoinVolume, endDate],
-    //	[beginDate, open, high, low, close, volume, bitcoinVolume, endDate],
+    //	[startDate, open, high, low, close, volume, bitcoinVolume, endDate],
+    //	[startDate, open, high, low, close, volume, bitcoinVolume, endDate],
     //	...
     //]
 }
