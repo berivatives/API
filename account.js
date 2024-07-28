@@ -236,7 +236,7 @@ function cancelOrder(id) {
 function getNewAddress() {
     send({
         m: 'ad',
-        type: 'legacy' | 'bech32'
+        t: 'legacy' | 'bech32'
     });
 }
 
