@@ -235,8 +235,8 @@ function cancelOrder(id) {
 //type: optional - address type - default is legacy
 function getNewAddress() {
     send({
-        m: 'a',
-        type: 'legacy' | 'bech32'
+        m: 'ad',
+        t: 'legacy' | 'bech32'
     });
 }
 
